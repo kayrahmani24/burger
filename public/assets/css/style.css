@@ -1,0 +1,17 @@
+#burgerImg {
+	margin: 0 auto;
+	height: 150px;
+	width: 150px;
+}
+
+h1 {
+	text-align: center;
+}
+
+body {
+	background-color: orange;
+}
+
+h1,h2 {
+	color: brown;
+}

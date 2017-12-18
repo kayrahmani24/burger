@@ -1,0 +1,69 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Burgers!</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <img src="/assets/img/burger.jpg" class="img-responsive" id="burgerImg" alt="burger">
+    </div>
+  </div>
+
+<div class="row">
+    <div id ="list" class="col-md-4">
+      <h2>Burger List</h2>
+
+        <ul>
+          {{#each burgers}}
+          {{#unless this.devoured}}
+          <li>
+            {{this.burger_name}}
+
+            <form action="/{{this.id}}?_method=PUT" method="POST">
+            <input type="hidden" name="eaten" value="1">
+            <button class = "btn-primary"type="submit">Devour It!</button>
+            </form>
+          </li>
+          {{/unless}}
+          {{/each}}
+        </ul>
+    </div>
+
+  <div class="col-md-4">
+    <h2>Add a Burger</h2>
+      <form class="create-update-form" action="/" method="POST">
+
+        <div class="form-group">
+          <label for="burger">Burger Name:</label>
+          <input type="text" id="burger" name="name">
+        </div>
+
+        <button class = "btn-primary" type="submit">Add Burger</button>
+      </form>
+  </div>
+
+
+  <div class="col-md-4">
+    <h2>Devoured Burgers</h2>
+
+    <ul>
+      {{#each burgers}}
+        {{#if this.devoured}}
+          <li>
+            {{this.burger_name}}
+
+            <form action="/{{this.id}}?_method=PUT" method="POST">
+              <input type="hidden" name="eaten" value="0">
+              <button class = "btn-primary" type="submit">Return to List</button>
+            </form>
+
+          
+          </li>
+        {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
